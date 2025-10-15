@@ -1,4 +1,4 @@
-from stats import get_num_words
+from stats import get_num_words, get_num_character
 
 def get_book_text(filepath):
     with open(filepath) as f:
@@ -9,5 +9,6 @@ def main():
     book_text = get_book_text("/home/hova/workspace/github.com/HOVA63/bookbot/books/frankenstein.txt")
     num_words = get_num_words(book_text)
     print(f"Found {num_words} total words")
+    print(get_num_character(book_text))
 
 main()
