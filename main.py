@@ -1,3 +1,4 @@
+import sys
 from stats import get_num_words, get_chars_dict, sort_dict
 
 def get_book_text(filepath):
@@ -5,13 +6,19 @@ def get_book_text(filepath):
         return f.read()
 
 def main():
-    book_path = "/home/hova/workspace/github.com/HOVA63/bookbot/books/frankenstein.txt"
+    entry_check()
+    book_path = sys.argv[1]
     book_text = get_book_text(book_path)
     num_words = get_num_words(book_text)
     chars_dict = get_chars_dict(book_text)
     sorted_dict = sort_dict(chars_dict)
     print_report(num_words, sorted_dict, book_path)
     
+def entry_check():
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
 def print_report(num_words, sorted_dict, book_path):
     print("============ BOOKBOT ============")
     print(f"Analyzing book found at {book_path}")
